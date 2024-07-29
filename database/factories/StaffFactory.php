@@ -18,8 +18,8 @@ class StaffFactory extends Factory
     {
         return [
             'staff_name' => $this->faker->name(),
-            'phone' => $this->faker->phoneNumber(),
-            'email' => $this->faker->email(),
+            'staff_phone' => $this->faker->phoneNumber(),
+            'staff_email' => $this->faker->email(),
         ];
     }
 }

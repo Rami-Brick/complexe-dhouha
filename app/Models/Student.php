@@ -28,15 +28,7 @@ class Student extends Model
     use HasFactory;
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'birth_date',
-        'course_id',
-        'gender',
-        'relative_id',
-        'payment_status',
-        'event_participation',
-        'leave_with',
+
     ];
 
     public function getBirthDateAttribute($value)

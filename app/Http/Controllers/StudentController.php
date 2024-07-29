@@ -53,7 +53,7 @@ class StudentController extends Controller
         $student->save();
 
 //        dd('student created successfully');
-        return redirect ('/students');
+        return redirect ('/student');
 
     }
 
@@ -88,15 +88,17 @@ class StudentController extends Controller
         ]);
 
 
-        $student = Student::find($id);
-
-
-        if (!$student) {
-            return redirect()->route('students.index')->with('error', 'Student not found');
-        }
-
-
-        $student->update($request->all());
+        $student = Student::findOrFail($id);
+        $student->first_name = $request->input('first_name');
+        $student->last_name = $request->input('last_name');
+        $student->birth_date = $request->input('birth_date');
+        $student->course_id = $request->input('course_id');
+        $student->gender = $request->input('gender');
+        $student->relative_id = $request->input('relative_id');
+        $student->payment_status = $request->input('payment_status');
+        $student->event_participation = $request->input('even_list_as_string');
+        $student->leave_with = $request->input('leave_with');
+        $student->save();
 
 
         return redirect()->route('students.index')->with('success', 'Student updated successfully');
@@ -108,15 +110,12 @@ class StudentController extends Controller
         $student = Student::find($id);
 
 
-        if (!$student) {
-            return response()->json(['message' => 'Student not found'], 404);
+        if ($student) {
+            $student->delete();
         }
 
 
-        $student->delete();
-
-
-        return response()->json(['message' => 'Student deleted successfully'], 200);
+        return redirect()->route('students.index')->with('success', 'Student deleted successfully');
     }
 
 

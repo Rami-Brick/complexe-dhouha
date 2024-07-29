@@ -11,27 +11,43 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/////////index///////////////
-Route::get('/student',[StudentController::class, 'index'])->name('students.index');
-Route::get('/relative',[RelativeController::class, 'index'])->name('relatives.index');
-Route::get('/course',[CourseController::class, 'index'])->name('courses.index');
-Route::get('/staff',[StaffController::class, 'index'])->name('staff.index');
+Route::prefix('student')->controller(StudentController::class)->group(function(){
+    Route::get('', 'index')->name('students.index');
+    Route::post('', 'store')->name('students.store');
+    Route::get('create', 'create')->name('students.create');
+    Route::get('{studentId}/edit', 'edit')->name('students.edit');
+    Route::post('{studentId}','update')->name('students.update');
+    Route::delete('{studentId}', 'destroy')->name('students.destroy');
+});
+
+Route::prefix('relative')->controller(RelativeController::class)->group(function() {
+    Route::get('','index')->name('relatives.index');
+    Route::get('create', 'create')->name('relatives.create');
+    Route::post('', 'store')->name('relatives.store');
+    Route::get('{relativeId}/edit', 'edit')->name('relatives.edit');
+    Route::post('{relativeId}', 'store')->name('relatives.update');
+    Route::delete('{relativeId}', 'destroy')->name('relatives.destroy');
+});
+
+Route::prefix('course')->controller(CourseController::class)->group(function() {
+    Route::get('','index')->name('courses.index');
+    Route::get('create', 'create')->name('courses.create');
+    Route::post('', 'store')->name('courses.store');
+    Route::get('{courseId}/edit', 'edit')->name('courses.edit');
+    Route::post('{courseId}', 'store')->name('courses.update');
+    Route::delete('{courseId}', 'destroy')->name('courses.destroy');
+});
+
+Route::prefix('staff')->controller(StaffController::class)->group(function() {
+    Route::get('','index')->name('staff.index');
+    Route::get('create', 'create')->name('staff.create');
+    Route::post('', 'store')->name('staff.store');
+    Route::get('{staffId}/edit', 'edit')->name('staff.edit');
+    Route::post('{staffId}', 'store')->name('staff.update');
+    Route::delete('{staffId}', 'destroy')->name('staff.destroy');
+});
 
 
-///////////create///////////////
-Route::get('/student/create', [StudentController::class, 'create'])->name('students.create');
-Route::get('/relatives/create', [RelativeController::class, 'create'])->name('relatives.create');
-Route::post('/student', [StudentController::class, 'store'])->name('students.store');
-Route::post('/relatives/store', [RelativeController::class, 'store'])->name('relatives.store');
-
-//////////edit///////////////
-Route::get('/student/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
-Route::get('/relatives/create', [RelativeController::class, 'create'])->name('relatives.create');
-Route::post('/student/{id}', [StudentController::class, 'update'])->name('students.update');
-Route::post('/relatives/store', [RelativeController::class, 'store'])->name('relatives.store');
-
-////////////delete/////////////////
-Route::delete('/student/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
 
 
 Route::get('/dashboard', function () {
