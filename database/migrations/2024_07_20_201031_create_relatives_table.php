@@ -13,16 +13,17 @@ return new class extends Migration
     {
         Schema::create('relatives', function (Blueprint $table) {
             $table->id();
-//            $table->foreignId('student_id')->constrained()->cascadeOnDelete();
-            $table->string('father_name');
-            $table->string('mother_name');
-            $table->string('phone_father');
-            $table->string('phone_mother');
-            $table->string('email');
+            $table->string('father_name')->nullable();
+            $table->string('mother_name')->nullable();
+            $table->string('phone_father')->nullable();
+            $table->string('phone_mother')->nullable();
+            $table->string('job_father')->nullable();
+            $table->string('job_mother')->nullable();
+            $table->string('cin_father')->nullable();
+            $table->string('cin_mother')->nullable();
+            $table->string('email')->nullable();
             $table->string('address');
-            $table->string('job');
-            $table->string('cin');
-            $table->string('notes');
+            $table->string('notes')->nullable();
             $table->timestamps();
         });
     }

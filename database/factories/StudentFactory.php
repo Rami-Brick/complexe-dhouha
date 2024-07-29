@@ -19,7 +19,8 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => $this->faker->name(),
+            'first_name' => $this->faker->name(),
+            'last_name' => $this->faker->name(),
             'birth_date' => $this->faker->date(),
             'course_id' => Course::factory(), // Assuming you have a Class model and factory
             'gender' => $this->faker->randomElement(['boy', 'girl']),
@@ -28,7 +29,6 @@ class StudentFactory extends Factory
             'comments' => $this->faker->optional()->text(),
             'event_participation' => $this->faker->word(),
             'leave_with' => $this->faker->word(),
-
         ];
     }
 }

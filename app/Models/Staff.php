@@ -9,6 +9,13 @@ class Staff extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'staff_name',
+        'phone',
+        'email',
+    ];
+
+
     public function class()
     {
         return $this->belongsToMany(Course::class,'course_id');

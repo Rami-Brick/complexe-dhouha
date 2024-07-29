@@ -23,8 +23,10 @@ class RelativeFactory extends Factory
             'phone_mother' => $this->faker->phoneNumber(),
             'email' => $this->faker->unique()->safeEmail(),
             'address' => $this->faker->address(),
-            'job' => $this->faker->jobTitle(),
-            'cin' => $this->faker->creditCardNumber(),
+            'job_father' => $this->faker->jobTitle(),
+            'job_mother' => $this->faker->jobTitle(),
+            'cin_father' => $this->faker->creditCardNumber(),
+            'cin_mother' => $this->faker->creditCardNumber(),
             'notes' => $this->faker->text(),
         ];
     }

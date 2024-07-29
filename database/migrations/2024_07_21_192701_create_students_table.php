@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->date('birth_date');
             $table->foreignId('course_id')->nullable()->constrained()->nullOnDelete();
             $table->enum('gender', ['boy', 'girl']);
             $table->foreignId('relative_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('payment_status');
+            $table->string('payment_status')->nullable();
             $table->text('comments')->nullable();
-            $table->string('event_participation');
-            $table->string('leave_with');
+            $table->string('event_participation')->nullable();
+            $table->string('leave_with')->nullable();
             $table->timestamps();
         });
     }

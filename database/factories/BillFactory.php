@@ -23,6 +23,7 @@ class BillFactory extends Factory
             'amount' => $this->faker->randomDigit(),
             'paid_amount' => $this->faker->randomDigit(),
             'status' => $this->faker->word(),
+            'reference' => $this->faker->creditCardNumber(),
             'student_id' => Student::factory(),
         ];
     }
