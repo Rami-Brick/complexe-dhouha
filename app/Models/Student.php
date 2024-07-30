@@ -31,17 +31,17 @@ class Student extends Model
 
     ];
 
-    public function getBirthDateAttribute($value)
-    {
-        return $value.$value;
-    }
-    protected function birthDate(): Attribute
-    {
-        return Attribute::make(
-            get: fn (string $value) => $value.$value,
-            set: fn (string $value) => date('Y-m-d', strtotime($value)),
-        );
-    }
+//    public function getBirthDateAttribute($value)
+//    {
+//        return $value.$value;
+//    }
+//    protected function birthDate(): Attribute
+//    {
+//        return Attribute::make(
+//            get: fn (string $value) => $value.$value,
+//            set: fn (string $value) => date('Y-m-d', strtotime($value)),
+//        );
+//    }
 
 
     /**

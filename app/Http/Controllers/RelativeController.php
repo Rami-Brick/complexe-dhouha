@@ -105,6 +105,13 @@ class RelativeController extends Controller
         return redirect()->route('relatives.index')->with('success', 'Parent updated successfully');
     }
 
+    public function show($id)
+    {
+        $relative = Relative::findOrFail($id);
+        return view('relative.show', ['relative' => $relative]);
+    }
+
+
     public function destroy($id)
     {
 

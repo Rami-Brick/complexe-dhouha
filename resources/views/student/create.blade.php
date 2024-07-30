@@ -6,6 +6,7 @@
     <title>Create Student</title>
     <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Optional: Add your CSS here -->
 </head>
+
 <body>
 <div class="container">
     <h1>Create Student</h1>

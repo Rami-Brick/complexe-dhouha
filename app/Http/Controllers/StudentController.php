@@ -15,6 +15,10 @@ class StudentController extends Controller
         $students = Student::all();
         return view('student.index',compact('students'));
     }
+    public function indexAll()
+    {
+        return Student::all();
+    }
 
     public function create()
     {
@@ -103,6 +107,14 @@ class StudentController extends Controller
 
         return redirect()->route('students.index')->with('success', 'Student updated successfully');
     }
+
+    public function show($id)
+    {
+        $student = Student::findOrFail($id);
+
+        return view('student.show', ['student' => $student]);
+    }
+
 
     public function destroy($id)
     {

@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RelativeController;
 use App\Http\Controllers\StaffController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -15,18 +16,21 @@ Route::prefix('student')->controller(StudentController::class)->group(function()
     Route::get('', 'index')->name('students.index');
     Route::post('', 'store')->name('students.store');
     Route::get('create', 'create')->name('students.create');
-    Route::get('{studentId}/edit', 'edit')->name('students.edit');
+    Route::get('{studentId}', 'show')->name('students.show');
     Route::post('{studentId}','update')->name('students.update');
     Route::delete('{studentId}', 'destroy')->name('students.destroy');
+    Route::get('{studentId}/edit', 'edit')->name('students.edit');
+    Route::get('all', 'indexAll');
 });
 
 Route::prefix('relative')->controller(RelativeController::class)->group(function() {
     Route::get('','index')->name('relatives.index');
-    Route::get('create', 'create')->name('relatives.create');
     Route::post('', 'store')->name('relatives.store');
-    Route::get('{relativeId}/edit', 'edit')->name('relatives.edit');
+    Route::get('create', 'create')->name('relatives.create');
+    Route::get('{relativeId}','show')->name('relatives.show');
     Route::post('{relativeId}', 'store')->name('relatives.update');
     Route::delete('{relativeId}', 'destroy')->name('relatives.destroy');
+    Route::get('{relativeId}/edit', 'edit')->name('relatives.edit');
 });
 
 Route::prefix('course')->controller(CourseController::class)->group(function() {
@@ -45,6 +49,15 @@ Route::prefix('staff')->controller(StaffController::class)->group(function() {
     Route::get('{staffId}/edit', 'edit')->name('staff.edit');
     Route::post('{staffId}', 'store')->name('staff.update');
     Route::delete('{staffId}', 'destroy')->name('staff.destroy');
+});
+
+Route::prefix('template')->controller(TemplateController::class)->group(function() {
+    Route::get('','index');
+//    Route::get('create', 'create')->name('staff.create');
+//    Route::post('', 'store')->name('staff.store');
+//    Route::get('{staffId}/edit', 'edit')->name('staff.edit');
+//    Route::post('{staffId}', 'store')->name('staff.update');
+//    Route::delete('{staffId}', 'destroy')->name('staff.destroy');
 });
 
 
