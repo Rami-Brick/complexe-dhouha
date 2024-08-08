@@ -22,7 +22,7 @@
                     <p><strong>ID:</strong> {{ $course->id }}</p>
                     <p><strong>Course Name:</strong> {{ $course->course_name }}</p>
                     <p><strong>Level:</strong> {{ $course->level }}</p>
-                    <p><strong>staff:</strong> {{ $course->staff_id }}</p>
+                    <p><strong>staff:</strong> {{ $course->staff ? $course->staff->staff_name : 'not assigned' }}</p>
                 </div>
             </div>
         </div>

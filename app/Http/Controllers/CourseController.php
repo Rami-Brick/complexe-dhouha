@@ -62,7 +62,7 @@ class CourseController extends Controller
 
         $course = Course::findOrfail($id);
 
-        $course = new Course($id);
+//        $course = new Course($id);
         $course->course_name = $request->input('course_name');
         $course->level = $request->input('level');
 //        $course->staff_id = $request->input('staff_id');
@@ -73,7 +73,9 @@ class CourseController extends Controller
 
     public function show($id)
     {
+//        $course = Course::with('staff')->findOrFail($id);
         $course = Course::findOrFail($id);
+//        dd($course);
         return view('course.show', ['course' => $course]);
     }
 

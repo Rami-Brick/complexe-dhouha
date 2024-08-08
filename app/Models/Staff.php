@@ -26,7 +26,7 @@ class Staff extends Model
     ];
 
 
-    public function class()
+    public function course()
     {
         return $this->belongsToMany(Course::class,'course_id');
     }

@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Course</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Optional: Add your CSS here -->
-</head>
-<body>
-<div class="container">
-    <h1>Create Course</h1>
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
 
+    <x-navbars.sidebar activePage="students.create"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        <x-navbars.navs.auth titlePage="Create Student"></x-navbars.navs.auth>
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-body">
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>
@@ -20,7 +20,7 @@
     </div>
     @endif
 
-    <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+    <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
     <form action="{{ route('courses.store') }}" method="POST">
         @csrf
         <div class="form-group">
@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label for="level">Level</label>
-            <select id="level" name="level" class="form-control" required>
+            <select id="level" name="level" class="custom-select" required>
                 <option value="bébé">Bébé</option>
                 <option value="1-2 ans">1-2 ans</option>
                 <option value="2-3 ans">2-3 ans</option>
@@ -44,5 +44,12 @@
     </form>
 
 </div>
-</body>
-</html>
+</div>
+</div>
+</div>
+<x-footers.auth></x-footers.auth>
+</div>
+</main>
+<x-plugins></x-plugins>
+
+</x-layout>
