@@ -71,6 +71,12 @@ class CourseController extends Controller
         return redirect()->route('courses.index')->with('success', 'Course updated successfully');
     }
 
+    public function show($id)
+    {
+        $course = Course::findOrFail($id);
+        return view('course.show', ['course' => $course]);
+    }
+
     public function destroy($id)
     {
 

@@ -36,6 +36,7 @@ Route::prefix('relative')->controller(RelativeController::class)->group(function
 Route::prefix('course')->controller(CourseController::class)->group(function() {
     Route::get('','index')->name('courses.index');
     Route::get('create', 'create')->name('courses.create');
+    Route::get('{courseId}','show')->name('courses.show');
     Route::post('', 'store')->name('courses.store');
     Route::get('{courseId}/edit', 'edit')->name('courses.edit');
     Route::post('{courseId}', 'store')->name('courses.update');

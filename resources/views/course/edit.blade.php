@@ -26,19 +26,20 @@
     <form action="{{ route('courses.update', $course->id) }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="father_name">Course Name</label>
-            <input type="text" id="course_name" name="course_name" class="form-control" required>
+            <label for="course_name">Course Name</label>
+            <input type="text" id="course_name" name="course_name" class="form-control" value="{{ $course->course_name }}" required>
         </div>
 
         <div class="form-group">
             <label for="level">Level</label>
             <select id="level" name="level" class="form-control" required>
-                <option value="bébé">Bébé</option>
-                <option value="1-2 ans">1-2 ans</option>
-                <option value="2-3 ans">2-3 ans</option>
-                <option value="3 ans">3 ans</option>
-                <option value="4 ans">4 ans</option>
-                <option value="5 ans">5 ans</option>
+                <option value="">Select Level</option>
+                <option value="bébé" {{ old('level', $course->level) == 'bébé' ? 'selected' : '' }}>Bébé</option>
+                <option value="1-2 ans" {{ old('level', $course->level) == '1-2 ans' ? 'selected' : '' }}>1-2 ans</option>
+                <option value="2-3 ans" {{ old('level', $course->level) == '2-3 ans' ? 'selected' : '' }}>2-3 ans</option>
+                <option value="3 ans" {{ old('level', $course->level) == '3 ans' ? 'selected' : '' }}>3 ans</option>
+                <option value="4 ans" {{ old('level', $course->level) == '4 ans' ? 'selected' : '' }}>4 ans</option>
+                <option value="5 ans" {{ old('level', $course->level) == '5 ans' ? 'selected' : '' }}>5 ans</option>
             </select>
         </div>
 

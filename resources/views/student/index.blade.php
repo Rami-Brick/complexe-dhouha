@@ -2,9 +2,9 @@
 
     <x-navbars.sidebar activePage="students.index"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <!-- Navbar -->
+
         <x-navbars.navs.auth titlePage="Students List"></x-navbars.navs.auth>
-        <!-- End Navbar -->
+
         <div class="container-fluid py-4">
             <div class="row">
                 <div class="col-12">
