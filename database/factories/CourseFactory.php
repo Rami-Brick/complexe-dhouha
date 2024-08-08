@@ -19,7 +19,7 @@ class CourseFactory extends Factory
     public function definition(): array
     {
         return [
-            'course_name' => $this->faker->word(),
+            'name' => $this->faker->word(),
             'level' => $this->faker->randomElement(['bébé', '1-2 ans', '2-3 ans', '3 ans', '4 ans', '5 ans']),
             'staff_id' => Staff::factory(),
         ];

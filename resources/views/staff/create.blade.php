@@ -1,48 +1,53 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Course</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Optional: Add your CSS here -->
-</head>
-<body>
-<div class="container">
-    <h1>Create Course</h1>
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
+    <x-navbars.sidebar activePage="staff.create"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
-    <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
-    <form action="{{ route('courses.store') }}" method="POST">
-        @csrf
-        <div class="form-group">
-            <label for="father_name">Course Name</label>
-            <input type="text" id="course_name" name="course_name" class="form-control" required>
+        <x-navbars.navs.auth titlePage="Create Staff"></x-navbars.navs.auth>
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-body">
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
+
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary">Back</a>
+                            <form action="{{ route('staff.store') }}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <label for="name">Staff Name</label>
+                                    <input type="text" id="name" name="name" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="phone">Phone</label>
+                                    <input type="text" id="phone" name="phone" class="form-control" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">email</label>
+                                    <input type="text" id="email" name="email" class="form-control" required>
+                                </div>
+
+
+
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <x-footers.auth></x-footers.auth>
         </div>
+    </main>
+    <x-plugins></x-plugins>
 
-        <div class="form-group">
-            <label for="level">Level</label>
-            <select id="level" name="level" class="form-control" required>
-                <option value="bébé">Bébé</option>
-                <option value="1-2 ans">1-2 ans</option>
-                <option value="2-3 ans">2-3 ans</option>
-                <option value="3 ans">3 ans</option>
-                <option value="4 ans">4 ans</option>
-                <option value="5 ans">5 ans</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-</div>
-</body>
-</html>
+</x-layout>

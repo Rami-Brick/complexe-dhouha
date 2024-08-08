@@ -53,7 +53,7 @@
                                     <select name="course_id" id="course_id" class="custom-select">
                                         <option value="">Select a course</option>
                                         @foreach ($courses as $course)
-                                        <option value="{{ $course->id }}">{{ $course->course_name }}</option>
+                                        <option value="{{ $course->id }}">{{ $course->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>

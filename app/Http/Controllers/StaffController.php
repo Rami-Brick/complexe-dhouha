@@ -11,8 +11,8 @@ class StaffController extends Controller
 {
     public function index()
     {
-        $staff = Staff::all();
-        return view('staff.index');
+        $staffs = Staff::all();
+        return view('staff.index',compact('staffs'));
     }
 
     public function create()
@@ -23,19 +23,18 @@ class StaffController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'staff_name' => 'required|string|max:255',
-            'staff_phone' => 'required|string|max:20',
-            'staff_email' => 'nullable|email',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'nullable|email',
 
         ]);
         $staff = new Staff();
-        $staff->staff_name = $request->input('staff_name');
-        $staff->staff_phone = $request->input('staff_phone');
-        $staff->staff_email = $request->input('staff_email');
-//        $staff->staff_id = $request->input('staff_id');
+        $staff->name = $request->input('name');
+        $staff->phone = $request->input('phone');
+        $staff->email = $request->input('email');
         $staff->save();
 
-//        dd('student created successfully');
+
         return redirect ('/staff');
     }
 
@@ -55,18 +54,16 @@ class StaffController extends Controller
     {
 
         $request->validate([
-            'staff_name' => 'required|string|max:255',
-            'staff_phone' => 'required|string|max:20',
-            'staff_email' => 'nullable|email',
+            'name' => 'required|string|max:255',
+            'phone' => 'required|string|max:20',
+            'email' => 'nullable|email',
         ]);
-
 
         $staff = staff::findOrfail($id);
 
-        $staff = new Staff($id);
-        $staff->staff_name = $request->input('staff_name');
-        $staff->staff_phone = $request->input('staff_phone');
-        $staff->staff_email = $request->input('staff_email');
+        $staff->name = $request->input('name');
+        $staff->phone = $request->input('phone');
+        $staff->email = $request->input('email');
         $staff->save();
 
         return redirect()->route('staff.index')->with('success', 'staff updated successfully');

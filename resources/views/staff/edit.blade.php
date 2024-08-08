@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Course</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Optional: Add your CSS here -->
+    <title>Edit Staff</title>
 </head>
 <body>
 <div class="container">
-    <h1>Edit Course</h1>
+    <h1>Edit Staff</h1>
 
 
     @if ($errors->any())
@@ -21,26 +20,24 @@
     </div>
     @endif
 
-    <a href="{{ route('courses.index') }}">Back</a>
+    <a href="{{ route('staff.index') }}">Back</a>
 
-    <form action="{{ route('courses.update', $course->id) }}" method="POST">
+    <form action="{{ route('staff.update', $staff->id) }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="father_name">Course Name</label>
-            <input type="text" id="course_name" name="course_name" class="form-control" required>
+            <label for="name">Staff Name</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ $staff->name }}" required>
+        </div>
+        <div class="form-group">
+                <label for="name">Phone</label>
+                <input type="text" id="phone" name="phone" class="form-control" value="{{ $staff->phone }}" required>
+        </div>
+        <div class="form-group">
+                <label for="name">Email</label>
+                <input type="text" id="email" name="email" class="form-control" value="{{ $staff->email }}" required>
         </div>
 
-        <div class="form-group">
-            <label for="level">Level</label>
-            <select id="level" name="level" class="form-control" required>
-                <option value="bébé">Bébé</option>
-                <option value="1-2 ans">1-2 ans</option>
-                <option value="2-3 ans">2-3 ans</option>
-                <option value="3 ans">3 ans</option>
-                <option value="4 ans">4 ans</option>
-                <option value="5 ans">5 ans</option>
-            </select>
-        </div>
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

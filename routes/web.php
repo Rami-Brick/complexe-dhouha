@@ -28,7 +28,7 @@ Route::prefix('relative')->controller(RelativeController::class)->group(function
     Route::post('', 'store')->name('relatives.store');
     Route::get('create', 'create')->name('relatives.create');
     Route::get('{relativeId}','show')->name('relatives.show');
-    Route::post('{relativeId}', 'store')->name('relatives.update');
+    Route::post('{relativeId}', 'update')->name('relatives.update');
     Route::delete('{relativeId}', 'destroy')->name('relatives.destroy');
     Route::get('{relativeId}/edit', 'edit')->name('relatives.edit');
 });
@@ -39,7 +39,7 @@ Route::prefix('course')->controller(CourseController::class)->group(function() {
     Route::get('{courseId}','show')->name('courses.show');
     Route::post('', 'store')->name('courses.store');
     Route::get('{courseId}/edit', 'edit')->name('courses.edit');
-    Route::post('{courseId}', 'store')->name('courses.update');
+    Route::post('{courseId}', 'update')->name('courses.update');
     Route::delete('{courseId}', 'destroy')->name('courses.destroy');
 });
 
@@ -48,7 +48,7 @@ Route::prefix('staff')->controller(StaffController::class)->group(function() {
     Route::get('create', 'create')->name('staff.create');
     Route::post('', 'store')->name('staff.store');
     Route::get('{staffId}/edit', 'edit')->name('staff.edit');
-    Route::post('{staffId}', 'store')->name('staff.update');
+    Route::post('{staffId}', 'update')->name('staff.update');
     Route::delete('{staffId}', 'destroy')->name('staff.destroy');
 });
 

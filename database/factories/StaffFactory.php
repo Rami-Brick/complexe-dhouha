@@ -17,9 +17,9 @@ class StaffFactory extends Factory
     public function definition(): array
     {
         return [
-            'staff_name' => $this->faker->name(),
-            'staff_phone' => $this->faker->phoneNumber(),
-            'staff_email' => $this->faker->email(),
+            'name' => $this->faker->name(),
+            'phone' => $this->faker->phoneNumber(),
+            'email' => $this->faker->email(),
         ];
     }
 }

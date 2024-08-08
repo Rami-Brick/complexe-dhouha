@@ -54,7 +54,7 @@
                                         <td><a href="{{ route('students.show', $student->id) }}">{{ $student->last_name }}</td>
                                         <td>{{ \Carbon\Carbon::parse($student->birth_date)->format('F j, Y') }}</td>
                                         <td>{{ $student->gender }}</td>
-                                        <td>{{ $student->course ? $student->course->course_name : 'N/A' }}</td>
+                                        <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
                                         <td>{{ $student->relative ? $student->relative->father_name : 'N/A' }}</td>
                                         <td>
                                             <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning btn-sm">Edit</a>

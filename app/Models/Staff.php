@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int id
- * @property string staff_name
- * @property string staff_phone
- * @property string staff_email
+ * @property string name
+ * @property string phone
+ * @property string email
  * @property string created_at
  * @property string updated_at
  *

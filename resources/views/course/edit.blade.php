@@ -26,8 +26,8 @@
     <form action="{{ route('courses.update', $course->id) }}" method="POST">
         @csrf
         <div class="form-group">
-            <label for="course_name">Course Name</label>
-            <input type="text" id="course_name" name="course_name" class="form-control" value="{{ $course->course_name }}" required>
+            <label for="name">Course Name</label>
+            <input type="text" id="name" name="name" class="form-control" value="{{ $course->name }}" required>
         </div>
 
         <div class="form-group">

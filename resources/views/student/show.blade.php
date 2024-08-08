@@ -25,7 +25,7 @@
                     <p><strong>Last Name:</strong> {{ $student->last_name }}</p>
                     <p><strong>Birth Date:</strong> {{ $student->birth_date }}</p>
                     <p><strong>Gender:</strong> {{ $student->gender }}</p>
-                    <p><strong>Course:</strong> {{ $student->course ? $student->course->course_name : 'N/A' }}</p>
+                    <p><strong>Course:</strong> {{ $student->course ? $student->course->name : 'N/A' }}</p>
                     <p><strong>Parent:</strong> {{ $student->relative ? $student->relative->father_name : 'N/A' }}</p>
                     <p><strong>Payment Status:</strong> {{ $student->payment_status }}</p>
                     <p><strong>Leave With:</strong> {{ $student->leave_with }}</p>

@@ -35,7 +35,7 @@
                                     @foreach ($courses as $course)
                                     <tr>
                                         <td>{{ $course->id }}</td>
-                                        <td><a href="{{ route('courses.show', $course->id) }}">{{ $course->course_name }}</td>
+                                        <td><a href="{{ route('courses.show', $course->id) }}">{{ $course->name }}</td>
                                         <td>{{ $course->level }}</td>
                                         <td>
                                             <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning btn-sm">Edit</a>

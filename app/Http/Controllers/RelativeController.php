@@ -88,7 +88,7 @@ class RelativeController extends Controller
 
         $relative = Relative::findOrfail($id);
 
-        $relative = new Relative($id);
+//        $relative = new Relative($id);
         $relative->father_name = $request->input('father_name');
         $relative->mother_name = $request->input('mother_name');
         $relative->phone_father = $request->input('phone_father');

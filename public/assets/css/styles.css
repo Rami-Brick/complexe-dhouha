@@ -34,4 +34,16 @@
     margin-top: 0.75rem;
 }
 
+.sidenav-header {
+    display: flex;
+    justify-content: center; /* Centers the logo horizontally */
+    align-items: center; /* Centers the logo vertically */
+    height: 100px; /* Adjust as needed */
+}
+
+.navbar-brand-img {
+    max-height: 100px; /* Adjust height as needed */
+    max-width: 100%; /* Ensures image scales proportionally */
+}
+
 

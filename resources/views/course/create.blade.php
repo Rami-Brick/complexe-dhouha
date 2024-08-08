@@ -1,9 +1,9 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
-    <x-navbars.sidebar activePage="students.create"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="courses.create"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
-        <x-navbars.navs.auth titlePage="Create Student"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Create Relative"></x-navbars.navs.auth>
         <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
         <div class="container-fluid py-4">
             <div class="row">
@@ -25,7 +25,7 @@
         @csrf
         <div class="form-group">
             <label for="father_name">Course Name</label>
-            <input type="text" id="course_name" name="course_name" class="form-control" required>
+            <input type="text" id="name" name="name" class="form-control" required>
         </div>
 
         <div class="form-group">

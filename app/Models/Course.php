@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int id
- * @property string course_name
+ * @property string name
  * @property string level
  * @property int staff_id
  * @property string created_at

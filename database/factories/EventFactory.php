@@ -18,9 +18,9 @@ class EventFactory extends Factory
     public function definition(): array
     {
         return [
-            'event_name' => $this->faker->word(),
-            'event_date' => $this->faker->date(),
-            'event_fee' => $this->faker->randomDigit(),
+            'name' => $this->faker->word(),
+            'date' => $this->faker->date(),
+            'fee' => $this->faker->randomDigit(),
             'age_group' => $this->faker->randomElement(['1-2 ans', '2-3 ans', '3 ans', '4 ans', '5 ans']),
         ];
     }
