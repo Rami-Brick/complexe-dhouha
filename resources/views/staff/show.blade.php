@@ -1,28 +1,28 @@
 <x-layout bodyClass="g-sidenav-show  bg-gray-200">
 
-    <x-navbars.sidebar activePage="students.index"></x-navbars.sidebar>
+    <x-navbars.sidebar activePage="staff.index"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
-        <x-navbars.navs.auth titlePage="Students List"></x-navbars.navs.auth>
+        <x-navbars.navs.auth titlePage="Staff List"></x-navbars.navs.auth>
 
-        <title>Course Details</title>
+        <title>Staff Details</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         </head>
         <body>
         <div class="container">
-            <h1>Course Details</h1>
+            <h1>Staff Details</h1>
 
-            <a href="{{ route('courses.index') }}" class="btn btn-secondary mb-3">Back to List</a>
+            <a href="{{ route('staff.index') }}" class="btn btn-secondary mb-3">Back to List</a>
 
             <div class="card">
                 <div class="card-header">
 
                 </div>
                 <div class="card-body">
-                    <p><strong>ID:</strong> {{ $course->id }}</p>
-                    <p><strong>Course Name:</strong> {{ $course->name }}</p>
-                    <p><strong>Level:</strong> {{ $course->level }}</p>
-                    <p><strong>staff:</strong> {{ $course->staff ? $course->staff->name : 'not assigned' }}</p>
+                    <p><strong>ID:</strong> {{ $staff->id }}</p>
+                    <p><strong>Staff Name:</strong> {{ $staff->name }}</p>
+                    <p><strong>Phone:</strong> {{ $staff->phone }}</p>
+                    <p><strong>Email:</strong> {{ $staff->email }}</p>
                 </div>
             </div>
         </div>

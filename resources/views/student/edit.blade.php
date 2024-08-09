@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Student</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-</head>
-<body>
-<div class="container">
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
+
+    <x-navbars.sidebar activePage="students.edit"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        <x-navbars.navs.auth titlePage="Edit Student"></x-navbars.navs.auth>
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-body">
     <h1>Edit Student</h1>
 
     @if ($errors->any())
@@ -20,7 +22,7 @@
     </div>
     @endif
 
-    <a href="{{ route('students.index') }}">Back</a>
+                            <a href="{{ route('students.index') }}" class="btn btn-secondary mb-3">Back</a>
 
     <form action="{{ route('students.update', $student->id) }}" method="POST">
         @csrf
@@ -42,7 +44,7 @@
 
         <div class="form-group">
             <label for="gender">Gender</label>
-            <select id="gender" name="gender" class="form-control" required>
+            <select id="gender" name="gender" class="custom-select" required>
                 <option value="boy" {{ $student->gender == 'boy' ? 'selected' : '' }}>Boy</option>
                 <option value="girl" {{ $student->gender == 'girl' ? 'selected' : '' }}>Girl</option>
             </select>
@@ -50,7 +52,7 @@
 
         <div class="form-group">
             <label for="course_id">Course</label>
-            <select name="course_id" id="course_id" class="form-control">
+            <select name="course_id" id="course_id" class="custom-select">
                 <option value="">Select a course</option>
                 @foreach ($courses as $course)
                 <option value="{{ $course->id }}" {{ $student->course_id == $course->id ? 'selected' : '' }}>{{ $course->name }}</option>
@@ -60,7 +62,7 @@
 
         <div class="form-group">
             <label for="relative_id">Parent</label>
-            <select name="relative_id" id="relative_id" class="form-control">
+            <select name="relative_id" id="relative_id" class="custom-select">
                 <option value="">Select a relative</option>
                 @foreach ($relatives as $relative)
                 <option value="{{ $relative->id }}" {{ $student->relative_id == $relative->id ? 'selected' : '' }}>{{ $relative->father_name }}</option>
@@ -84,6 +86,14 @@
     <form method="GET" action="{{ route('relatives.create') }}">
         <button class="text-xs text-gray-400">Add parent</button>
     </form>
-</div>
-</body>
-</html>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <x-footers.auth></x-footers.auth>
+        </div>
+    </main>
+    <x-plugins></x-plugins>
+
+</x-layout>
+

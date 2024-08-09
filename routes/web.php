@@ -47,6 +47,7 @@ Route::prefix('staff')->controller(StaffController::class)->group(function() {
     Route::get('','index')->name('staff.index');
     Route::get('create', 'create')->name('staff.create');
     Route::post('', 'store')->name('staff.store');
+    Route::get('{staffId}','show')->name('staff.show');
     Route::get('{staffId}/edit', 'edit')->name('staff.edit');
     Route::post('{staffId}', 'update')->name('staff.update');
     Route::delete('{staffId}', 'destroy')->name('staff.destroy');

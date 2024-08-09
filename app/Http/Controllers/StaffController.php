@@ -69,6 +69,13 @@ class StaffController extends Controller
         return redirect()->route('staff.index')->with('success', 'staff updated successfully');
     }
 
+    public function show($id)
+    {
+        $staff = Staff::findOrFail($id);
+        return view('staff.show', ['staff' => $staff]);
+    }
+
+
     public function destroy($id)
     {
 

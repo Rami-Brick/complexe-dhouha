@@ -31,7 +31,7 @@
         @foreach ($staffs as $staff)
         <tr>
             <td>{{ $staff->id }}</td>
-            <td>{{ $staff->name }}</td>
+            <td><a href="{{ route('staff.show', $staff->id) }}">{{ $staff->name }}</td>
             <td>{{ $staff->phone }}</td>
             <td>{{ $staff->email }}</td>
             <td><a href="{{ route('staff.edit', $staff->id) }}" class="btn btn-warning btn-sm">Edit</a>
