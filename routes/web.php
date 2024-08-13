@@ -8,11 +8,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TemplateController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
-Route::prefix('student')->controller(StudentController::class)->group(function(){
+Route::middleware('auth')->prefix('student')->controller(StudentController::class)->group(function(){
     Route::get('', 'index')->name('students.index');
     Route::post('', 'store')->name('students.store');
     Route::get('create', 'create')->name('students.create');
@@ -23,7 +20,7 @@ Route::prefix('student')->controller(StudentController::class)->group(function()
     Route::get('all', 'indexAll');
 });
 
-Route::prefix('relative')->controller(RelativeController::class)->group(function() {
+Route::middleware('auth')->prefix('relative')->controller(RelativeController::class)->group(function() {
     Route::get('','index')->name('relatives.index');
     Route::post('', 'store')->name('relatives.store');
     Route::get('create', 'create')->name('relatives.create');
@@ -33,7 +30,7 @@ Route::prefix('relative')->controller(RelativeController::class)->group(function
     Route::get('{relativeId}/edit', 'edit')->name('relatives.edit');
 });
 
-Route::prefix('course')->controller(CourseController::class)->group(function() {
+Route::middleware('auth')->prefix('course')->controller(CourseController::class)->group(function() {
     Route::get('','index')->name('courses.index');
     Route::get('create', 'create')->name('courses.create');
     Route::get('{courseId}','show')->name('courses.show');
@@ -43,7 +40,7 @@ Route::prefix('course')->controller(CourseController::class)->group(function() {
     Route::delete('{courseId}', 'destroy')->name('courses.destroy');
 });
 
-Route::prefix('staff')->controller(StaffController::class)->group(function() {
+Route::middleware('auth')->prefix('staff')->controller(StaffController::class)->group(function() {
     Route::get('','index')->name('staff.index');
     Route::get('create', 'create')->name('staff.create');
     Route::post('', 'store')->name('staff.store');
@@ -52,18 +49,6 @@ Route::prefix('staff')->controller(StaffController::class)->group(function() {
     Route::post('{staffId}', 'update')->name('staff.update');
     Route::delete('{staffId}', 'destroy')->name('staff.destroy');
 });
-
-Route::prefix('template')->controller(TemplateController::class)->group(function() {
-    Route::get('','index');
-//    Route::get('create', 'create')->name('staff.create');
-//    Route::post('', 'store')->name('staff.store');
-//    Route::get('{staffId}/edit', 'edit')->name('staff.edit');
-//    Route::post('{staffId}', 'store')->name('staff.update');
-//    Route::delete('{staffId}', 'destroy')->name('staff.destroy');
-});
-
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

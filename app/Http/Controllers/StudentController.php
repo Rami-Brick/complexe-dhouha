@@ -10,15 +10,33 @@ use Illuminate\Validation\Rule;
 
 class StudentController extends Controller
 {
-    public function index()
+//    public function index()
+//    {
+//        $students = Student::all();
+//        return view('student.index',compact('students'));
+//    }
+    public function index(Request $request)
     {
-        $students = Student::all();
-        return view('student.index',compact('students'));
+        $gender = $request->input('gender');
+        $search = $request->input('search');
+
+        $studentsQuery = Student::query()
+            ->when($gender, function ($query) use ($gender) {
+                $query->where('gender', $gender);
+            })
+            ->when($search, function ($query) use ($search) {
+                $query->where(function ($query) use ($search) {
+                    $query
+                        ->where('first_name', 'like', '%' . $search . '%')
+                        ->orWhere('last_name', 'like', '%' . $search . '%');
+                });
+            });
+
+        $students = $studentsQuery->get();
+        return view('student.index', compact('students'));
     }
-    public function indexAll()
-    {
-        return Student::all();
-    }
+
+
 
     public function create()
     {

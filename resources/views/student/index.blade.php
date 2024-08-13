@@ -13,7 +13,7 @@
                         <a href="{{ route('students.create') }}" class="btn bg-gradient-dark mb-0" href="javascript:;"><i
                                     class="material-icons text-sm">add</i>&nbsp;&nbsp;Add New
                                 Student</a>
-                        </div>
+                        </div> 
                         <div class="card-body px-0 pb-2">
                             <div class="table-responsive p-0">
                                 <table class="table align-items-center mb-0">

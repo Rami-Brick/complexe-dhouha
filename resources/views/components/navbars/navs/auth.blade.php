@@ -10,13 +10,27 @@
 <!--            </ol>-->
             <h6 class="font-weight-bolder mb-0">{{ $titlePage }}</h6>
         </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                <div class="input-group input-group-outline">
-                    <label class="form-label">Type here...</label>
-                    <input type="text" class="form-control">
+            <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
+                <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+                    <form action="{{ route('students.index') }}" method="GET" class="d-flex">
+                        <div class="input-group input-group-outline @if(request('search')) is-filled @endif" style="width: auto">
+                            <label class="form-label">Search...</label>
+                            <input type="text" name="search" class="form-control" value="{{ request('search') }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary ms-2">
+                            <i class="material-icons opacity-10">search</i>
+                            Search</button>
+                        <button type="button" class="btn btn-secondary ms-2" onclick="window.location='{{ route('students.index') }}'">
+                            <i class="material-icons opacity-10">close</i>
+                            </button>
+                    </form>
                 </div>
             </div>
+
+
+            <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
+                @csrf
+            </form>
 
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
