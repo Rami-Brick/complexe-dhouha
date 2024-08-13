@@ -22,7 +22,7 @@
     </div>
     @endif
 
-                            <a href="{{ route('students.index') }}" class="btn btn-secondary mb-3">Back</a>
+                            <a href="{{ url()->previous() }}" class="btn btn-secondary mb-3">Back</a>
 
     <form action="{{ route('students.update', $student->id) }}" method="POST">
         @csrf

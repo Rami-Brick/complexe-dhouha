@@ -12,15 +12,16 @@ class StudentController extends Controller
 {
 //    public function index()
 //    {
-//        $students = Student::all();
+//        $students = Student::sortable()->paginate(5);
 //        return view('student.index',compact('students'));
 //    }
+
     public function index(Request $request)
     {
         $gender = $request->input('gender');
         $search = $request->input('search');
 
-        $studentsQuery = Student::query()
+        $studentsQuery = Student::sortable()
             ->when($gender, function ($query) use ($gender) {
                 $query->where('gender', $gender);
             })
@@ -32,7 +33,7 @@ class StudentController extends Controller
                 });
             });
 
-        $students = $studentsQuery->get();
+        $students = $studentsQuery->paginate(5);
         return view('student.index', compact('students'));
     }
 

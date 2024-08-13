@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Kyslik\ColumnSortable\Sortable;
 
 /**
  * @property int id
@@ -25,7 +26,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  */
 class Student extends Model
 {
-    use HasFactory;
+    use HasFactory,Sortable;
 
     protected $fillable = [
 
@@ -42,6 +43,17 @@ class Student extends Model
 //            set: fn (string $value) => date('Y-m-d', strtotime($value)),
 //        );
 //    }
+
+//    public $sortable = ['id',
+//        'first_name',
+//        'last_name',
+//        'birth_date',
+//        'gender',
+//        'course_id',
+//        'created_at',
+//        'updated_at'];
+//
+
 
 
     /**

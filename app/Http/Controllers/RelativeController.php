@@ -24,17 +24,17 @@ class RelativeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'father_name' => 'required|string|max:255',
-            'mother_name' => 'required|string|max:255',
-            'phone_father' => 'required|string|max:20',
-            'phone_mother' => 'required|string|max:20',
+            'father_name' => 'nullable|string|max:255',
+            'mother_name' => 'nullable|string|max:255',
+            'phone_father' => 'nullable|string|max:20',
+            'phone_mother' => 'nullable|string|max:20',
             'email' => 'nullable|email',
-            'address' => 'required|string|max:255',
-            'job_father' => 'required|string|max:255',
-            'job_mother' => 'required|string|max:255',
-            'cin_father' => 'required|string|max:255',
-            'cin_mother' => 'required|string|max:255',
-            'notes' => 'required|string',
+            'address' => 'nullable|string|max:255',
+            'job_father' => 'nullable|string|max:255',
+            'job_mother' => 'nullable|string|max:255',
+            'cin_father' => 'nullable|string|max:255',
+            'cin_mother' => 'nullable|string|max:255',
+            'notes' => 'nullable|string',
 
         ]);
 

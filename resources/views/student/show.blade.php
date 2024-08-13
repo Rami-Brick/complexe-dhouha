@@ -29,6 +29,12 @@
                     <p><strong>Parent:</strong> {{ $student->relative ? $student->relative->father_name : 'N/A' }}</p>
                     <p><strong>Payment Status:</strong> {{ $student->payment_status }}</p>
                     <p><strong>Leave With:</strong> {{ $student->leave_with }}</p>
+                    <a href="{{ route('students.edit', $student->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                    <form action="{{ route('students.destroy', $student->id) }}" method="POST" style="display:inline;">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?');">Delete</button>
+                    </form>
                 </div>
             </div>
         </div>
