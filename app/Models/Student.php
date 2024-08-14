@@ -49,10 +49,10 @@ class Student extends Model
 //        'last_name',
 //        'birth_date',
 //        'gender',
-//        'course_id',
-//        'created_at',
-//        'updated_at'];
-//
+//        'course.name',
+//        'created_at'
+//    ];
+
 
 
 

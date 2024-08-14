@@ -20,6 +20,9 @@ Route::middleware('auth')->prefix('student')->controller(StudentController::clas
     Route::get('all', 'indexAll');
 });
 
+Route::get('/autocomplete', [StudentController::class, 'autocomplete'])->name('autocomplete');
+
+
 Route::middleware('auth')->prefix('relative')->controller(RelativeController::class)->group(function() {
     Route::get('','index')->name('relatives.index');
     Route::post('', 'store')->name('relatives.store');

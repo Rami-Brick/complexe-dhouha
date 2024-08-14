@@ -8,7 +8,7 @@
         <i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
             aria-hidden="true" id="iconSidenav"></i>
         <a style="height: 100%" href=" {{ route('dashboard') }} ">
-            <img src="{{ asset('assets') }}/img/logo-complexe.png" style="height: 6rem" alt="main_logo">
+            <img src="{{ asset('assets') }}/img/logo-complexe.png" style="height: 2.5rem; margin-top: 25px;" alt="main_logo">
             <span class="ms-2 font-weight-bold text-white"></span>
         </a>
     </div>

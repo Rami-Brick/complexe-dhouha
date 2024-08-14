@@ -2,12 +2,10 @@
 
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur"
     navbar-scroll="true">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
     <div class="container-fluid py-1 px-3">
         <nav aria-label="breadcrumb">
-<!--            <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">-->
-<!--                <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;"></a></li>-->
-<!--                <li class="breadcrumb-item text-sm text-dark active" aria-current="page">{{ $titlePage }}</li>-->
-<!--            </ol>-->
             <h6 class="font-weight-bolder mb-0">{{ $titlePage }}</h6>
         </nav>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
@@ -15,7 +13,8 @@
                     <form action="{{ route('students.index') }}" method="GET" class="d-flex">
                         <div class="input-group input-group-outline @if(request('search')) is-filled @endif" style="width: auto">
                             <label class="form-label">Search...</label>
-                            <input type="text" name="search" class="form-control" value="{{ request('search') }}">
+                            <input type="text" name="search" id="search" class="form-control" value="{{ request('search') }}" autocomplete="off">
+                            <div id="searchResults" class="autocomplete-results"></div>
                         </div>
                         <button type="submit" class="btn btn-primary ms-2">
                             <i class="material-icons opacity-10">search</i>
@@ -24,17 +23,52 @@
                             <i class="material-icons opacity-10">close</i>
                             </button>
                     </form>
-                </div>
-            </div>
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            $('#search').on('keyup', function() {
+                                var query = $(this).val();
+                                if (query.length > 0) {
+                                    $.ajax({
+                                        url: "{{ route('autocomplete') }}",
+                                        type: "GET",
+                                        data: { 'query': query },
+                                        success: function(data) {
+                                            $('#searchResults').empty();
+                                            if(data.length > 0){
+                                                data.forEach(function(student){
+                                                    $('#searchResults').append('<div class="autocomplete-item">' + student.first_name + ' ' + student.last_name + '</div>');
+                                                });
+                                            } else {
+                                                $('#searchResults').append('<div class="autocomplete-item">No results found</div>');
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    $('#searchResults').empty();
+                                }
+                            });
+
+                            $(document).on('click', '.autocomplete-item', function(){
+                                var selectedValue = $(this).text();
+                                $('#search').val(selectedValue); // Set the selected value
+                                $('#searchResults').empty(); // Clear the suggestions
+
+                                // Build the URL with the search query and navigate to it
+                                var searchUrl = "{{ route('students.index') }}?search=" + encodeURIComponent(selectedValue);
+                                window.location.href = searchUrl;
+                            });
+                        });
+                    </script>
 
 
-            <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
+
+                    <form method="POST" action="{{ route('logout') }}" class="d-none" id="logout-form">
                 @csrf
             </form>
 
             <ul class="navbar-nav  justify-content-end">
                 <li class="nav-item d-flex align-items-center">
-                    <a href="javascript:;" class="nav-link text-body font-weight-bold px-0">
+                    <a href="javascript:" class="nav-link text-body font-weight-bold px-0">
                         <i class="fa fa-user me-sm-1"></i>
                         <span class="d-sm-inline d-none"
                             onclick="event.preventDefault();document.getElementById('logout-form').submit();">Sign

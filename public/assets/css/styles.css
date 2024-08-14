@@ -81,10 +81,9 @@
 
     .form-gender{
         display: block;
-        width: 100%;
         padding: 0.5rem 1rem 0.5rem 0;
         -moz-padding-start: -3px;
-        font-size: 0.1rem;
+        font-size: 1rem;
         font-weight: 400;
         line-height: 1.5rem;
         color: #495057;
@@ -99,6 +98,29 @@
         -moz-appearance: none;
         appearance: none;
     }
+
+.autocomplete-results {
+    border: 1px #ced4da;
+    border-radius: 4px;
+    background-color: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    position: absolute;
+    z-index: 1000;
+    width: 100%;
+    top: 100%; /* Positions the dropdown below the search input */
+    left: 0;   /* Aligns the dropdown with the left side of the input */
+}
+
+.autocomplete-item {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.autocomplete-item:hover {
+    background-color: #e9ecef;
+}
+
 
 
 

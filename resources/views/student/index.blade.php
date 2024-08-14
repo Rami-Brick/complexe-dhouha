@@ -21,13 +21,20 @@
                                 <option value="">All</option>
                                 <option value="boy" {{ request('gender') == 'boy' ? 'selected' : '' }}>Boy</option>
                                 <option value="girl" {{ request('gender') == 'girl' ? 'selected' : '' }}>Girl</option>
-                                <option>@sortablelink('created_at','Newest')</option>
-
+                            </select>
+                            <select name="course" id="course-filter" class="form-gender ms-2" aria-label="Course filter">
+                                <option value="">All Courses</option>
+                                @foreach($courses as $course)
+                                <option value="{{ $course->name }}" {{ request('course') == $course->name ? 'selected' : '' }}>{{ $course->name }}</option>
+                                @endforeach
                             </select>
                         </form>
 
                         <script>
                             document.getElementById('gender-filter').addEventListener('change', function() {
+                                document.getElementById('filter-form').submit();
+                            });
+                            document.getElementById('course-filter').addEventListener('change', function() {
                                 document.getElementById('filter-form').submit();
                             });
                         </script>
@@ -54,10 +61,11 @@
                                         <td>{{ $student->id }}</td>
                                         <td><a href="{{ route('students.show', $student->id) }}">{{ $student->first_name }}</a></td>
                                         <td><a href="{{ route('students.show', $student->id) }}">{{ $student->last_name }}</a></td>
-                                        <td>{{ \Carbon\Carbon::parse($student->birth_date)->format('F j, Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($student->birth_date)->age }} years</td>
                                         <td>{{ $student->gender }}</td>
                                         <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
                                         <td>{{ $student->relative ? $student->relative->father_name : 'N/A' }}</td>
+                                        <td>{{ $student->created_at }}</td>
                                     </tr>
                                     @endforeach
                                     </tbody>
@@ -79,8 +87,10 @@
     function clearFilters() {
         const searchInput = document.querySelector('input[name="search"]');
         const genderSelect = document.querySelector('select[name="gender"]');
+        const courseSelect = document.querySelector('select[name="course"]');
         searchInput.value = '';
         genderSelect.value = '';
+        courseSelect.value = '';
         document.querySelector('form').submit();
     }
 </script>

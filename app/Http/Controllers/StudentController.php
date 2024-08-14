@@ -19,23 +19,47 @@ class StudentController extends Controller
     public function index(Request $request)
     {
         $gender = $request->input('gender');
+        $course = $request->input('course');
         $search = $request->input('search');
+
+        $courses = Course::all();
 
         $studentsQuery = Student::sortable()
             ->when($gender, function ($query) use ($gender) {
                 $query->where('gender', $gender);
             })
+            ->when($course, function ($query) use ($course) {
+                $query->whereHas('course', function ($query) use ($course) {
+                    $query->where('name', $course);
+                });
+            })
             ->when($search, function ($query) use ($search) {
                 $query->where(function ($query) use ($search) {
-                    $query
-                        ->where('first_name', 'like', '%' . $search . '%')
-                        ->orWhere('last_name', 'like', '%' . $search . '%');
+                    $terms = explode(' ', $search); // Split the search query into terms
+                    foreach ($terms as $term) {
+                        $query->where(function ($query) use ($term) {
+                            $query->where('first_name', 'like', '%' . $term . '%')
+                                ->orWhere('last_name', 'like', '%' . $term . '%');
+                        });
+                    }
                 });
             });
 
         $students = $studentsQuery->paginate(5);
-        return view('student.index', compact('students'));
+
+        return view('student.index', compact('students','courses'));
     }
+
+
+    public function autocomplete(Request $request)
+    {
+        $search = $request->get('query');
+        $results = Student::where('first_name', 'like', '%' . $search . '%')
+            ->orWhere('last_name', 'like', '%' . $search . '%')
+            ->get(['id', 'first_name', 'last_name']);
+        return response()->json($results);
+    }
+
 
 
 
