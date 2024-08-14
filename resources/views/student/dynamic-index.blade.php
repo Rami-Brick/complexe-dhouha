@@ -24,8 +24,8 @@
                             </select>
                             <select name="course" id="course-filter" class="form-gender ms-2" aria-label="Course filter">
                                 <option value="">All Courses</option>
-                                @foreach($courseNames as $courseName)
-                                <option value="{{ $courseName }}" {{ request('course') == $courseName ? 'selected' : '' }}>{{ $courseName }}</option>
+                                @foreach($courses as $course)
+                                <option value="{{ $course->name }}" {{ request('course') == $course->name ? 'selected' : '' }}>{{ $course->name }}</option>
                                 @endforeach
                             </select>
                         </form>
@@ -64,11 +64,7 @@
                                         <td>{{ \Carbon\Carbon::parse($student->birth_date)->age }} years</td>
                                         <td>{{ $student->gender }}</td>
                                         <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
-                                        <td>  @if ($student->relative)
-                                            {{ $student->relative->father_name ?? $student->relative->mother_name }}
-                                            @else
-                                            N/A
-                                            @endif</td>
+                                        <td>{{ $student->relative ? $student->relative->father_name : 'N/A' }}</td>
                                         <td>{{ $student->created_at }}</td>
                                     </tr>
                                     @endforeach

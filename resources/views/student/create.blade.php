@@ -1,6 +1,9 @@
 <x-layout bodyClass="g-sidenav-show bg-gray-200">
 
     <x-navbars.sidebar activePage="students.create"></x-navbars.sidebar>
+
+
+
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
 
         <x-navbars.navs.auth titlePage="Create Student"></x-navbars.navs.auth>
@@ -63,7 +66,12 @@
                                     <select name="relative_id" id="relative_id" class="custom-select">
                                         <option value="">Select a relative</option>
                                         @foreach ($relatives as $relative)
-                                        <option value="{{ $relative->id }}">{{ $relative->father_name }}</option>
+                                            @if ($relative->father_name)
+                                                <option value="{{ $relative->id }}">{{ $relative->father_name }}</option>
+                                            @endif
+                                            @if ($relative->mother_name)
+                                                <option value="{{ $relative->id }}">{{ $relative->mother_name }}</option>
+                                            @endif
                                         @endforeach
                                     </select>
                                 </div>
@@ -84,6 +92,7 @@
                             <form method="GET" action="{{ route('relatives.create') }}" class="mt-3">
                                 <button type="submit" class="btn btn-link text-gray-400">Add parent</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
