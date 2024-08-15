@@ -28,6 +28,7 @@
                                 <option value="{{ $courseName }}" {{ request('course') == $courseName ? 'selected' : '' }}>{{ $courseName }}</option>
                                 @endforeach
                             </select>
+
                         </form>
 
                         <script>
@@ -61,7 +62,9 @@
                                         <td>{{ $student->id }}</td>
                                         <td><a href="{{ route('students.show', $student->id) }}">{{ $student->first_name }}</a></td>
                                         <td><a href="{{ route('students.show', $student->id) }}">{{ $student->last_name }}</a></td>
-                                        <td>{{ \Carbon\Carbon::parse($student->birth_date)->age }} years</td>
+                                        <td>
+                                            {{ \Carbon\Carbon::parse($student->birth_date)->diff(\Carbon\Carbon::now())->format('%y years, %m months') }}
+                                        </td>
                                         <td>{{ $student->gender }}</td>
                                         <td>{{ $student->course ? $student->course->name : 'N/A' }}</td>
                                         <td>  @if ($student->relative)

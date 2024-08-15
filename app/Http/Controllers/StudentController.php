@@ -24,7 +24,7 @@ class StudentController extends Controller
 
         $courseNames = Course::query()->pluck('name');
 
-        $studentsQuery = Student::sortable()
+        $studentsQuery = Student::sortable()->latest()
             ->when($gender, function ($query) use ($gender) {
                 $query->where('gender', $gender);
             })

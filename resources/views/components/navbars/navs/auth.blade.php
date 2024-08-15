@@ -13,7 +13,7 @@
                     <form action="{{ route('students.index') }}" method="GET" class="d-flex">
                         <div class="input-group input-group-outline @if(request('search')) is-filled @endif" style="width: auto">
                             <label class="form-label">Search...</label>
-                            <input type="text" name="search" id="search" class="form-control" value="{{ request('search') }}" autocomplete="off">
+                            <input type="text" name="search" id="search" style="height:45px" class="form-control" value="{{ request('search') }}" autocomplete="off">
                             <div id="searchResults" class="autocomplete-results"></div>
                         </div>
                         <button type="submit" class="btn btn-primary ms-2">
