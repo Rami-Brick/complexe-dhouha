@@ -25,7 +25,7 @@ class StudentFactory extends Factory
             'course_id' => Course::factory(), // Assuming you have a Class model and factory
             'gender' => $this->faker->randomElement(['boy', 'girl']),
             'relative_id' => Relative::factory(), // Assuming you have a Parent model and factory
-            'payment_status' => $this->faker->word(),
+            'payment_status' => $this->faker->randomElement(['Paid','Overdue','Partial']),
             'comments' => $this->faker->optional()->text(),
             'event_participation' => $this->faker->word(),
             'leave_with' => $this->faker->word(),

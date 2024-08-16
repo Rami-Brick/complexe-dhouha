@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('course_id')->nullable()->constrained()->nullOnDelete();
             $table->enum('gender', ['boy', 'girl']);
             $table->foreignId('relative_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('payment_status')->nullable();
+            $table->enum('payment_status',['Paid','Overdue','Partial']);
             $table->text('comments')->nullable();
             $table->string('event_participation')->nullable();
             $table->string('leave_with')->nullable();

@@ -1,13 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Parent</title>
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}"> <!-- Optional: Add your CSS here -->
-</head>
-<body>
-<div class="container">
+<x-layout bodyClass="g-sidenav-show bg-gray-200">
+
+    <x-navbars.sidebar activePage="relatives.edit"></x-navbars.sidebar>
+    <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+
+        <x-navbars.navs.auth titlePage="Edit Parent"></x-navbars.navs.auth>
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
+        <div class="container-fluid py-4">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card my-4">
+                        <div class="card-body">
     <h1>Edit Parent</h1>
 
 
@@ -21,7 +23,7 @@
     </div>
     @endif
 
-    <a href="{{ route('relatives.index') }}">Back</a>
+    <a href="{{ route('relatives.index') }}" class="btn btn-secondary mb-3">Back</a>
 
     <form action="{{ route('relatives.update', $relative->id) }}" method="POST">
         @csrf
@@ -84,6 +86,13 @@
     </form>
 
     </form>
-</div>
-</body>
-</html>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <x-footers.auth></x-footers.auth>
+        </div>
+    </main>
+    <x-plugins></x-plugins>
+
+</x-layout>

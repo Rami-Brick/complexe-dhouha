@@ -103,7 +103,7 @@ class StudentController extends Controller
             'course_id' => 'nullable|exists:courses,id',
             'gender' => ['required', Rule::in(['boy', 'girl'])],
             'relative_id' => 'nullable|exists:relatives,id',
-            'payment_status' => 'nullable|string|max:255',
+            'payment_status' => ['required', Rule::in(['Paid','Overdue','Partial'])],
             'even_list_as_string' => 'nullable|string|max:255',
             'leave_with' => 'nullable|string|max:255',
         ]);
@@ -150,7 +150,7 @@ class StudentController extends Controller
             'course_id' => 'nullable|exists:courses,id',
             'gender' => ['required', Rule::in(['boy', 'girl'])],
             'relative_id' => 'nullable|exists:relatives,id',
-            'payment_status' => 'nullable|string|max:255',
+            'payment_status' => ['required', Rule::in(['Paid','Overdue','Partial'])],
             'even_list_as_string' => 'nullable|string|max:255',
             'leave_with' => 'nullable|string|max:255',
         ]);

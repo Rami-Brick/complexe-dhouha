@@ -2,9 +2,9 @@
 
     <x-navbars.sidebar activePage="students.index"></x-navbars.sidebar>
     <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
-        <!-- Navbar -->
+        <link href="{{ asset('assets/css/styles.css') }}" rel="stylesheet" type="text/css" >
+
         <x-navbars.navs.auth titlePage="Students List"></x-navbars.navs.auth>
-        <!-- End Navbar -->
 
         <title>Student Details</title>
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
@@ -34,6 +34,7 @@
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this student?');">Delete</button>
+                    <a href="#" class="btn btn-pay btn-sm">Payment</a>
                     </form>
                 </div>
             </div>
